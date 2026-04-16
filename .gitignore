@@ -1,0 +1,23 @@
+# Visual Studio specific files
+.vs/
+*.vcxproj.user
+*.vcxproj.filters
+*.suo
+*.user
+*.db
+
+# Build outputs
+Debug/
+Release/
+x64/
+x86/
+*.exe
+*.dll
+*.obj
+*.pdb
+*.ilk
+
+# Temporary files
+*.tmp
+*.log
+*.cache
