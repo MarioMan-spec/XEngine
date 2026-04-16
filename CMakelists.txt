@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 3.15)
+project(XEngine)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Collect ALL source files from root and Core/
+file(GLOB_RECURSE SOURCES
+    CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Core/*.cpp"
+)
+
+# Create Win32 GUI executable (no console window)
+add_executable(${XEngine} WIN32 ${SOURCES})
+
+# Tell compiler where to find headers
+target_include_directories(${XEngine PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Core
+)
+
+# Link DirectX 11 libraries
+target_link_libraries($XEngine}
+    d3d11
+    d3dcompiler
+    dxguid
+    dxgi
+)
+
+# Enable Unicode (required for Windows API)
+target_compile_definitions(${XEngine} PRIVATE
+    UNICODE
+    _UNICODE
+)
